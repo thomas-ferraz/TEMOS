@@ -1,0 +1,44 @@
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+
+seed: 1234
+
+logger_level: INFO
+folder: ???
+
+split: gtest
+
+mean: false
+number_of_samples: 1
+fact: 1
+
+ckpt_name: last.ckpt
+last_ckpt_path: pretrained_models/kit-mmm-xyz/3l49g7hv/checkpoints/last.ckpt
+
+# only used if trained with kit-amass-rot
+# so with smpl rotations
+jointstype: mmm
+
+# if jointstype == vertices
+# can specify the gender
+# neutral / male / female
+gender: neutral
+
+# Composing nested config with default
+defaults:
+  - data: kit-mmm-xyz
+  - model: temos
+  - machine: server
+  - trainer: gpu
+  - sampler: all_conseq
+  - /path@path
+  - override hydra/job_logging: rich # custom
+  - override hydra/hydra_logging: rich # custom
+  - _self_
+
+transforms: ${data.transforms}
+
+
+data.batch_size: 1

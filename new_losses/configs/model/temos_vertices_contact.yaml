@@ -1,0 +1,28 @@
+# modelname: temos_contact_vertices
+# _target_: temos.model.temos.TEMOS
+
+# latent_dim: 256
+# vae: true
+# vertices: true
+# contact: true
+
+# transforms: ${transforms}
+
+# ff_size: 1024
+# num_layers: 6
+# num_head: ${model.num_layers}
+# droupout: 0.1
+# activation: "gelu"
+
+
+# defaults:
+#   - textencoder: distilbert_actor
+#   - motionencoder: actor
+#   - motiondecoder: actor_contact
+#   - losses: temos
+#   - optim: adamw
+#   - /model/losses/function/smoothL1@func_recons
+#   - /model/losses/function/smoothL1@func_latent
+#   - /model/losses/function/kl@func_kl
+#   - /model/losses/function/contact@func_contact
+#   - /model/losses/function/mse@func_vertices
